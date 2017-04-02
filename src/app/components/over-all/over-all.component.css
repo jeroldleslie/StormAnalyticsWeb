@@ -1,0 +1,12 @@
+.MapPlaceHolder {
+    height: 500px;
+    width: 500px;
+}
+
+
+ngui-map {display: block; height: 350px;}
+
+.sebm-google-map-container {
+  height: 350px;
+  width: 680px;
+}

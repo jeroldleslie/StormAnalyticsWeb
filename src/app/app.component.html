@@ -1,0 +1,38 @@
+<td-layout-nav>
+  <div td-toolbar-content layout="row" layout-align="center center" flex>
+    <span>Storm Events Analytics</span>
+    <span flex></span>
+  </div>
+  <div>
+    <md-tab-group md-stretch-tabs>
+      <md-tab label="Storm Events">
+            <over-all></over-all>
+      </md-tab>
+      <md-tab label="Property Damage">
+            <se-damage-on-time type="Property"></se-damage-on-time>
+      </md-tab>
+      <md-tab label="Crops Damage">
+        <se-damage-on-time type="Crops"></se-damage-on-time>
+      </md-tab>
+       <md-tab label="Direct Deaths">
+        <se-damage-on-time type="Direct Deaths"></se-damage-on-time>
+      </md-tab>
+      <md-tab label="Indirect Deaths">
+        <se-damage-on-time type="Indirect Deaths"></se-damage-on-time>
+      </md-tab>
+      <md-tab label="Direct Injuries">
+        <se-damage-on-time type="Direct Injuries"></se-damage-on-time>
+      </md-tab>
+      <md-tab label="Indirect Injuries">
+        <se-damage-on-time type="Indirect Injuries"></se-damage-on-time>
+      </md-tab>
+    </md-tab-group>
+  </div>
+  <td-layout-footer>
+    <div layout="row" layout-align="start center">
+      <span class="md-caption">Storm Event analysis using kafka storm</span>
+      <span flex></span>
+    </div>
+  </td-layout-footer>
+  
+</td-layout-nav>

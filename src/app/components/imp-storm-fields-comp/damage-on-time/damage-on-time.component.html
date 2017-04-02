@@ -1,0 +1,38 @@
+<md-toolbar>
+  <span>{{toolTitle}}</span>
+  <span flex></span>
+  <button md-mini-fab color="accent" (click)="refresh()">
+  <md-icon>refresh</md-icon>
+</button>
+</md-toolbar>
+
+<div layout="column" layout-align="center center" flex>
+  <div layout="column" style="width: 1200px;" flex>
+    <div layout="row" flex>
+      <md-card>
+        <md-card-title>{{pieTitle}}</md-card-title>
+        <md-divider></md-divider>
+        <se-pie-chart #pie [showPie]="true" [type]="type">
+        </se-pie-chart>
+      </md-card>
+      <md-card>
+        <md-card-title>{{gaugeTitle}}</md-card-title>
+        <md-divider></md-divider>
+        <se-pie-chart #gauge [showPie]="false" [type]="type">
+        </se-pie-chart>
+      </md-card>
+    </div>
+    <md-card>
+      <md-card-title>{{lineTitle}}</md-card-title>
+      <md-divider></md-divider>
+      <se-line-chart #line [type]="type">
+      </se-line-chart>
+    </md-card>
+    <md-card>
+      <md-card-title>{{gridTitle}}</md-card-title>
+      <md-divider></md-divider>
+      <se-pie-chart-grid #grid [type]="type">
+      </se-pie-chart-grid>
+    </md-card>
+  </div>
+</div>

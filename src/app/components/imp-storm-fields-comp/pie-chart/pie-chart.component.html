@@ -1,0 +1,8 @@
+<!--<div layout="row">-->
+  <ngx-charts-pie-chart *ngIf="showPie" [view]="view" [scheme]="colorScheme" [results]="data" [legend]="showLegend" [explodeSlices]="explodeSlices"
+    [labels]="showLabels" [doughnut]="doughnut" (select)="onSelect($event)">
+  </ngx-charts-pie-chart>
+  <ngx-charts-gauge *ngIf="!showPie" [view]="view" [scheme]="colorScheme" [results]="data" [min]="0" [max]="100" [angleSpan]="240" [startAngle]="-120"
+    [units]="units" [bigSegments]="10" [smallSegments]="5" (select)="onSelect($event)">
+  </ngx-charts-gauge>
+<!--</div>-->

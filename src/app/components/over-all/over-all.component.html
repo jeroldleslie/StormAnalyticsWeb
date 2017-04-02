@@ -1,0 +1,130 @@
+<md-toolbar>
+  <span>Overall Storm Event</span>
+  <span flex></span>
+  <button md-mini-fab color="accent" (click)="refresh()">
+  <md-icon>refresh</md-icon>
+</button>
+</md-toolbar>
+<div layout="column" layout-align="center center" flex>
+  <div layout="column" style="width: 1200px;" flex>
+    <div layout="row">
+      <md-card>
+        <md-card-title>Events Occurence Pie</md-card-title>
+        <md-divider></md-divider>
+        <ngx-charts-pie-chart [view]="pieView" [scheme]="colorScheme" [results]="overAllPieData" [legend]="pieShowLegend" [explodeSlices]="pieExplodeSlices"
+          [labels]="pieShowLabels" [doughnut]="pieDoughnut" (select)="onSelect($event)">
+        </ngx-charts-pie-chart>
+      </md-card>
+
+      <md-card>
+        <md-card-title>Events Locations</md-card-title>
+        <md-divider></md-divider>
+
+        <div style="width: 680px;">
+
+          <ngui-map zoom="3" center="42.827754, -101.460909">
+            <marker *ngFor="let pos of positions" (click)="showInfoWindow($event)" [position]="pos"></marker>
+          </ngui-map>
+
+
+          <div layout="row" layout-margin>
+            <md-select flex="50" placeholder="Storm Event Type" [(ngModel)]="selectedValue" name="item">
+              <md-option *ngFor="let item of event_types" [value]="item.event_type" (click)="onEventSelect()">
+                {{item.event_type}}
+              </md-option>
+            </md-select>
+            <md-select flex="50" placeholder="Year" [(ngModel)]="selectedYear" name="item">
+              <md-option *ngFor="let item of years" [value]="item.year" (click)="onEventSelect()">
+                {{item.year}}
+              </md-option>
+            </md-select>
+          </div>
+        </div>
+
+      </md-card>
+
+    </div>
+
+    <div layout="row" flex>
+      <md-card>
+        <md-card-title>Max Magnitude For Wind Type Storms</md-card-title>
+        <md-divider></md-divider>
+        <ngx-charts-number-card [view]="cardview" [scheme]="colorScheme" [results]="cardData">
+        </ngx-charts-number-card>
+      </md-card>
+    </div>
+
+    <div layout="row">
+      <md-card>
+        <md-card-title>Events Occurence</md-card-title>
+        <md-divider></md-divider>
+        <ngx-charts-bar-vertical [view]="barview" [scheme]="colorScheme" [results]="overAllPieData" [gradient]="bargradient" [xAxis]="barshowXAxis"
+          [yAxis]="barshowYAxis" [legend]="barshowLegend" [showXAxisLabel]="barshowXAxisLabel" [showYAxisLabel]="barshowYAxisLabel"
+          [xAxisLabel]="barxAxisLabel" [yAxisLabel]="baryAxisLabel" (select)="onSelect($event)">
+        </ngx-charts-bar-vertical>
+      </md-card>
+    </div>
+
+    <div layout="row" flex>
+      <md-card>
+        <md-card-title>Events Occurence By Year</md-card-title>
+        <md-divider></md-divider>
+        <ngx-charts-line-chart [view]="lineview" [scheme]="colorScheme" [results]="overAllDataByYear" [gradient]="linegradient" [xAxis]="lineshowXAxis"
+          [yAxis]="lineshowYAxis" [legend]="lineshowLegend" [showXAxisLabel]="lineshowXAxisLabel" [showYAxisLabel]="lineshowYAxisLabel"
+          [xAxisLabel]="linexAxisLabel" [yAxisLabel]="lineyAxisLabel" [autoScale]="lineautoScale" (select)="onSelect($event)">
+        </ngx-charts-line-chart>
+      </md-card>
+    </div>
+
+    <div layout="row" flex>
+      <md-card>
+        <md-card-title>Property Damages</md-card-title>
+        <md-divider></md-divider>
+        <se-bar-chart #bar6 type="Property"></se-bar-chart>
+      </md-card>
+    </div>
+
+    <div layout="row" flex>
+      <md-card>
+        <md-card-title>Crops Damages</md-card-title>
+        <md-divider></md-divider>
+        <se-bar-chart #bar1 type="Crops"></se-bar-chart>
+      </md-card>
+    </div>
+
+    <div layout="row" flex>
+      <md-card>
+        <md-card-title>Direct Deaths</md-card-title>
+        <md-divider></md-divider>
+        <se-bar-chart #bar2 type="Direct Deaths"></se-bar-chart>
+      </md-card>
+    </div>
+
+    <div layout="row" flex>
+      <md-card>
+        <md-card-title>Indirect Deaths</md-card-title>
+        <md-divider></md-divider>
+        <se-bar-chart #bar3 type="Indirect Deaths"></se-bar-chart>
+      </md-card>
+    </div>
+
+
+    <div layout="row" flex>
+      <md-card>
+        <md-card-title>Direct Injuries</md-card-title>
+        <md-divider></md-divider>
+        <se-bar-chart #bar4 type="Direct Injuries"></se-bar-chart>
+      </md-card>
+    </div>
+
+    <div layout="row" flex>
+      <md-card>
+        <md-card-title>Indirect Injuries</md-card-title>
+        <md-divider></md-divider>
+        <se-bar-chart #bar5 type="Indirect Injuries"></se-bar-chart>
+      </md-card>
+    </div>
+
+  </div>
+
+</div>
